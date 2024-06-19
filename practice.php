@@ -6,22 +6,9 @@
     <title>PHP Tutorial</title>
 </head>
 <body>
-    <?php 
-    // Single line comment
-    /** 
-     * Multiline comments
-    */
-    $name='Sandhyodip Das';
-    $designation='Software Developer';
-    $address="<p style='font-weight:600; color:red;'>50, Hazra Para Lane, Bally, Howrah.</p>"
-    ?>
-    <h1>
-        <?php 
-        echo "$name is a $designation";
-        ?>
-    </h1>
-    <?php 
-    echo $address;
-    ?>
+   <?php 
+   $result = print "Hello World!"; // This will output "Hello, World!" and $result will be 1
+   print '<br>'.$result; // Output: 1
+   ?>
 </body>
 </html>
