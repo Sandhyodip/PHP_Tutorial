@@ -6,9 +6,10 @@
     <title>PHP Tutorial</title>
 </head>
 <body>
-   <?php 
-   $result = print "Hello World!"; // This will output "Hello, World!" and $result will be 1
-   print '<br>'.$result; // Output: 1
+   <?php
+   $null= null;
+   echo gettype($null);
+   echo '<br>'; //NULL
    ?>
 </body>
 </html>

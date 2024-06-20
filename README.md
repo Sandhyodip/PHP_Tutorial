@@ -155,6 +155,76 @@ This array is also accessible from within functions and can be used to update gl
 ```
 > ECHO is marginally faster than print.
 
+# How does PHP Work?
+
+> Client makes a request.
+
+> Server runs PHP / extensions.
+
+> Query database if needed.
+
+> Load other files if needed.
+
+> Result is sent back to client.
+
+# HOW TO SET PASSWORD IN PHP MY ADMIN
+
+> USER ACCOUNTS --> [ROOT, LOCAL HOST] EDIT PRIVILEGES --> CHANGE PASSWORD.
+
+> XAMPP --> PHPMYADMIN --> CONFIG.INC (PHP FILE) --> PUT ENTERED PASSWORD HERE [$cfg['Servers'][$i]['password'] = '';].
+
+# PHP supports the following data types
+
+> 1. STRING.
+> 2. INTEGER.
+> 3. FLOAT / DOUBLE.
+> 4. BOOLEAN.
+> 5. ARRAY.
+> 6. OBJECT.
+> 7. NULL.
+> 8. RESOURCE.
+
+# NULL VALUE
+
+> Null is a special data type which can have only one value: NULL.
+
+> A variable of data type NULL is a variable that has no value assigned to it.
+
+> If a variable is created without a value, it is automatically assigned a value of NULL.
+
+> Variables can also be emptied by setting the value to NULL:
+
+```php
+<?php
+$null= null;
+echo gettype($null);
+echo '<br>'; //NULL
+?>
+```
+# PHP CLASSES & OBJECT
+
+> CLASSES & OBJECTS are the two main aspects of object-oriented programming (OOPS).
+
+> A CLASS is a template for OBJECT, and an OBJECT is an instance of a CLASS.
+
+> When the individual OBJECTS are created, they INHERIT all the properties and behaviors from the class, but each object will have different values for the properties.
+
+> Let's assume we have a CLASS named Car. A Car can have properties like model, color, etc. We can define variables like $model, $color, and so on, to hold the values of these properties. 
+
+> When the individual objects (Volvo, BMW, Toyota, etc.) are created, they inherit all the properties and behaviors from the class, but each object will have different values
+for the properties.
+
+> If we create a __construct() function, PHP will automatically call this function when you create an object from a class.
+
+> ## In PHP, constants are defined using the define() function or the const keyword.
+
+
+|  define() | const |
+| ------------- | ------------- |
+| define() can be used anywhere  | const must be used within the top-level scope or inside classes and interfaces.  |
+| Constants defined with define() are defined at runtime.| Constants defined with const are defined at compile time. |
+
+
 
 
 
