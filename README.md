@@ -224,7 +224,34 @@ for the properties.
 | define() can be used anywhere  | const must be used within the top-level scope or inside classes and interfaces.  |
 | Constants defined with define() are defined at runtime.| Constants defined with const are defined at compile time. |
 
+# The gzcompress() function in PHP
 
+> It is used to compress a string using the ZLIB data compression algorithm. This can be particularly useful for reducing the size of data that needs to be stored or transmitted, thus improving storage efficiency and transmission speed.
+
+```php
+string gzcompress ( string $data [, int $level = -1 [, int $encoding = ZLIB_ENCODING_DEFLATE ]] )
+```
+> data: The data to compress.
+
+> level (optional): The compression level. It ranges from 0 (no compression) to 9 (maximum compression). The default value is -1, which lets the algorithm choose the optimal level.
+
+> encoding (optional): The encoding mode. The default is ZLIB_ENCODING_DEFLATE. Other values include ZLIB_ENCODING_GZIP and ZLIB_ENCODING_RAW.
+
+> It returns the compressed string on success or false on failure.
+
+```php
+<?php
+$data = "This is a test string to be compressed.";
+$compressed_data = gzcompress($data);
+
+echo "Original data: $data\n";
+echo "Compressed data: $compressed_data\n";
+
+// To decompress the data, you can use gzuncompress()
+$uncompressed_data = gzuncompress($compressed_data);
+echo "Uncompressed data: $uncompressed_data\n";
+?>
+```
 
 
 
