@@ -131,3 +131,73 @@ echo chr(0x52) . "<br>"; // R // HEX VALUE
 $str4 = "Hello world!";
 echo chunk_split($str4,2,"."); // H.e.l.l.o. .w.o.r.l.d.!.
 echo '<br>';
+
+// PHP convert_uuencode() Function encodes a string using the uuencode algorithm.
+$str = "Hello world!";
+echo convert_uuencode($str); // ,2&5L;&\@=V]R;&0A `
+echo '<br>';
+
+// PHP convert_uudecode() Function decodes a string using the uuencode algorithm.
+$str = ",2&5L;&\@=V]R;&0A `";
+echo convert_uudecode($str); // Hello world!
+echo '<br>';
+
+$str = "Hello World!";
+echo count_chars($str,3); // !HWdelor
+echo '<br>';
+
+/**
+ * The crc32() function calculates a 32-bit CRC (cyclic redundancy checksum) for a string.
+ * This function can be used to validate data integrity.
+ * Data Integrity: Ensuring data integrity by comparing CRC32 checksums before and after data transmission or storage.
+ * File Verification: Verifying the integrity of files by comparing their CRC32 checksums.
+ * Hashing for Data Structures: Using CRC32 checksums as a hashing function for hash tables and other data structures.
+ */
+$str = crc32("Hello World!");
+printf("%u\n",$str);
+echo '<br>';
+
+/*
+The crypt() function in PHP is used to hash a string, typically for the purpose of securely storing passwords.
+It uses one-way encryption to create a hash of a password or other data. The function supports several hashing algorithms, 
+including DES, Blowfish, and MD5, among others.
+*/
+
+
+$password = "mypassword";
+// Using Blowfish algorithm with a random salt
+$salt = '$2y$10$' . bin2hex(random_bytes(22));
+$hash = crypt($password, $salt);
+
+echo "Original password: $password\n";
+echo '<br>';
+echo "Hashed password: $hash\n";
+echo '<br>';
+
+// Verifying the password
+if (hash_equals($hash, crypt($password, $hash))) {
+    echo "Password verified!";
+} else {
+    echo "Invalid password!";
+}
+echo '<br>';
+
+// Example with password_hash() and password_verify()
+
+$password = "mypassword";
+// Hashing the password
+$hash = password_hash($password, PASSWORD_DEFAULT);
+
+echo "Original password: $password\n";
+echo '<br>';
+echo "Hashed password: $hash\n";
+echo '<br>';
+
+// Verifying the password
+if (password_verify($password, $hash)) {
+    echo "Password verified!";
+} else {
+    echo "Invalid password!";
+}
+echo '<br>';
+
