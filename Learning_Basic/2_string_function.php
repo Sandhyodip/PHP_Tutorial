@@ -424,3 +424,36 @@ print_r($parsedData);
 echo '<br>';
 
 // The quoted_printable_decode() function decodes a quoted-printable string to an 8-bit ASCII string.
+
+// The quoted_printable_encode() function converts an 8-bit string to a quoted-printable string.
+
+// The quotemeta() function adds backslashes in front of some predefined characters in a string.
+
+$str1 = "1 + 1 = 2";
+$str2 = "1 * 1 = 1";
+$str3 = "Could you borrow me 5$?";
+$str4 = "Are you not entertained? (I am..)";
+$str5 = "The caret [ ^ ] Looks like a hat!";
+
+echo quotemeta($str1)."<br>";
+echo quotemeta($str2)."<br>";
+echo quotemeta($str3)."<br>";
+echo quotemeta($str4)."<br>";
+echo quotemeta($str5)."<br>";
+
+// The sha1() function calculates the SHA-1 hash of a string.
+
+$str = "Sandhyodip";
+echo sha1($str); // 106f1a95b61c007f54a9dfe2bd8c3d6db8de8772
+echo '<br>';
+
+// The sha1_file() function calculates the SHA-1 hash of a file.
+
+// The similar_text() function calculates the similarity between two strings.
+
+$str1 = "Hello, World!";
+$str2 = "Hello, PHP!";
+
+$similarity = similar_text($str1, $str2, $percent);
+echo "Number of matching characters: " . $similarity . "\n"; // Number of matching characters: 8
+echo "Similarity percentage: " . $percent . "%<br>"; // Similarity percentage: 66.666666666667%
