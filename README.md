@@ -296,9 +296,72 @@ echo "Uncompressed data: $uncompressed_data\n";
 
 > Imagine a database stores passwords using MD5 hashes. An attacker could use a rainbow table containing precomputed MD5 hashes of common passwords. If the attacker finds a match between a hash in the rainbow table and a hash from the database, they can determine the original password without directly computing the hash at the time of the attack.
 
+# Cross-Site Scripting (XSS)
 
+> It is a type of security vulnerability typically found in web applications, including those written in PHP. 
 
+> It allows attackers to inject malicious scripts into web pages viewed by other users. 
 
+> These scripts can steal cookies, session tokens, or other sensitive information, manipulate the content of the webpage, or perform actions on behalf of the user without their consent.
 
+## Types of XSS Attacks:
 
+### Stored XSS (Persistent XSS):
 
+> The malicious script is permanently stored on the target server, such as in a database, comment field, or forum post. When a user views the stored content, the script is executed.
+
+### Reflected XSS (Non-Persistent XSS):
+
+> The malicious script is reflected off a web server, such as in an error message, search result, or any other response that includes some or all of the input sent to the server as part of the request. The script is executed in the user's browser as part of the server's response.
+
+### DOM-Based XSS:
+
+> The vulnerability exists in the client-side script rather than the server-side code. The attack is executed as a result of modifying the DOM environment in the victim's browser, which is then used by the client-side script.
+
+### Example of XSS in PHP:
+
+>Imagine a simple PHP page that displays a user's input:
+
+```php
+<?php
+if (isset($_GET['name'])) {
+    $name = $_GET['name'];
+    echo "Hello, " . $name . "!";
+}
+?>
+```
+> If an attacker sends a URL like this:
+
+```php
+http://example.com/?name=<script>alert('XSS');</script>
+```
+> The page will output:
+
+```php
+Hello, <script>alert('XSS');</script>!
+```
+## Preventing XSS in PHP:
+
+### Sanitize User Input:
+
+> Use functions like htmlspecialchars() to convert special characters to HTML entities.
+
+```php
+$name = htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
+echo "Hello, " . $name . "!";
+```
+### Use Prepared Statements:
+
+> For database interactions, use prepared statements to prevent injection attacks.
+
+### Content Security Policy (CSP):
+
+> Implement CSP headers to restrict the sources from which content can be loaded and executed.
+
+### Escape Output:
+
+> Always escape output based on the context in which it will be used (HTML, JavaScript, URL, etc.).
+
+### Validate Input:
+
+> Validate and filter user input to ensure it conforms to expected formats.

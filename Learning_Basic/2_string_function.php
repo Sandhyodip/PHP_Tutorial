@@ -163,7 +163,6 @@ It uses one-way encryption to create a hash of a password or other data. The fun
 including DES, Blowfish, and MD5, among others.
 */
 
-
 $password = "mypassword";
 // Using Blowfish algorithm with a random salt
 $salt = '$2y$10$' . bin2hex(random_bytes(22));
@@ -201,3 +200,227 @@ if (password_verify($password, $hash)) {
 }
 echo '<br>';
 
+// EXPLODE() - BREAKS A STRING INTO AN ARRAY.
+$str5 = "Hello world. It's a beautiful day.";
+print_r (explode(" ",$str5)); // Array ( [0] => Hello [1] => world. [2] => It's [3] => a [4] => beautiful [5] => day. )
+echo '<br>';
+
+// The printf() function in PHP is used to output a formatted string.
+
+$name = "John";
+$age = 25;
+$height = 1.75;
+
+printf("Name: %s\n", $name);
+echo '<br>';
+printf("Age: %d years\n", $age);
+echo '<br>';
+printf("Height: %.2f meters\n", $height);
+echo '<br>';
+
+$name= 'Sandhyodip Das';
+$age = 29;
+printf("Hello, Myself %s and I am %d years old.",$name,$age); // Hello, Myself Sandhyodip Das and I am 29 years old.
+echo '<br>';
+
+$price = 275.50;
+printf("The price is Rs.%.2f", $price); // Outputs: "The price is $19.99
+echo '<br>';
+
+/**
+ * The get_html_translation_table() function in PHP returns the translation table used by htmlspecialchars() and htmlentities(). 
+ * This table is useful if we need to understand or manipulate how certain characters are converted to HTML entities.
+ */
+
+$trans = get_html_translation_table(HTML_SPECIALCHARS);
+echo "Translation table for htmlspecialchars:\n";
+echo '<pre>';
+print_r($trans); // Translation table for htmlspecialchars: Array ( ["] => " [&] => & [<] => < [>] => > )
+echo '<br>';
+/*
+Array
+(
+    ["] => "
+    [&] => &
+    [<] => <
+    [>] => >
+)
+*/
+
+// Get the translation table for htmlentities
+$trans_entities = get_html_translation_table(HTML_ENTITIES);
+echo "\nTranslation table for htmlentities:\n";
+echo '<pre>';
+print_r($trans_entities);
+echo '<br>';
+/*
+Array
+(
+    ["] => "
+    [&] => &
+    [<] => <
+    [>] => >
+    ......
+)
+*/
+
+/**
+ * hebrev() and hebrevc() can convert Hebrew logical text (the Windows encoding) to Hebrew visual text. 
+ * Hebrew visual requires no special right-to-left character support to be displayed properly, making it very useful for displaying Hebrew text on the web.
+ */
+
+// The hex2bin() function converts a string of hexadecimal values to ASCII characters.
+echo hex2bin("48656c6c6f20576f726c6421"); // Hello World!
+echo '<br>';
+
+/**
+ * The htmlentities() function in PHP converts all applicable characters in a string to their corresponding HTML entities. 
+ * This function is useful for displaying content in a web page in a way that ensures special characters (like <, >, &, etc.) are correctly displayed as text rather than being interpreted as HTML or JavaScript code.
+ */
+
+$string = "A 'quote' is <b>bold</b> & a <i>italic</i> text.";
+$encodedString = htmlentities($string);
+echo "Original string: $string\n";
+echo "Encoded string: $encodedString\n";
+
+$userInput = "<script>alert('Hello, this is an XSS attack!');</script>";
+$safeOutput = htmlentities($userInput);
+echo $safeOutput; // <script>alert('Hello, this is an XSS attack!');</script>
+echo '<br>';
+
+/**
+ * htmlspecialchars_decode() is a PHP function used to convert special HTML entities back to their corresponding characters. 
+ * This function is the opposite of htmlspecialchars(), which is used to convert characters to HTML entities to prevent XSS attacks and other types of injection.
+ */
+
+ /**
+  * The htmlspecialchars() function in PHP converts special characters to HTML entities. 
+  * This function is primarily used to prevent cross-site scripting (XSS) attacks by escaping characters that have special significance in HTML.
+  */
+$string = "A 'quote' is <b>bold</b> & a <i>italic</i> text.";
+$encodedString = htmlspecialchars($string);
+echo "Original string: $string\n";
+echo "Encoded string: $encodedString\n";
+
+// The implode() function returns a string from the elements of an array.
+$arr = array('Hello','World!','Beautiful','Day!');
+echo implode(" ",$arr); // Hello World! Beautiful Day!
+echo '<br>';
+echo implode("+",$arr); // Hello+World!+Beautiful+Day!
+echo '<br>';
+
+// The join() function returns a string from the elements of an array.
+// The join() function is an alias of the implode() function.
+$arr1 = array('Hello','World!','Beautiful','Day!');
+echo join(" ",$arr1); // Hello World! Beautiful Day!
+echo '<br>';
+
+// The levenshtein() function returns the Levenshtein distance between two strings.
+// The Levenshtein distance is the number of characters we have to replace, insert or delete to transform string1 into string2.
+/**
+ * The levenshtein() function is faster than the similar_text() function. 
+ * However, similar_text() will give you a more accurate result with less modifications needed.
+ */
+
+$word1 = "kitten";
+$word2 = "sitting";
+$distance = levenshtein($word1, $word2);
+echo "The Levenshtein distance between '$word1' and '$word2' is $distance"; // The Levenshtein distance between 'kitten' and 'sitting' is 3
+echo '<br>';
+echo levenshtein("Hello World","ello World",10,20,30); // 30 // Using 5th parameter // The cost of deleting a character. Default is 1;
+echo '<br>';
+echo levenshtein("Hello World","llo World",10,20,30); // 60 // 30*2=60;
+echo '<br>';
+
+/**
+ * The localeconv() function in PHP returns an associative array containing information about the numeric and monetary formatting based on the current locale. 
+ * This function is useful for applications that need to format numbers and currency according to the local conventions.
+ */
+
+// Set the locale to US English
+setlocale(LC_ALL, 'en_US.UTF-8');
+// Get locale information
+$locale_info = localeconv();
+echo "Numeric formatting:\n";
+echo "Decimal point: " . $locale_info['decimal_point'] . "\n";
+echo "Thousands separator: " . $locale_info['thousands_sep'] . "\n";
+echo "Grouping: " . implode(", ", $locale_info['grouping']) . "\n";
+echo "\nMonetary formatting:\n";
+echo "International currency symbol: " . $locale_info['int_curr_symbol'] . "\n";
+echo "Local currency symbol: " . $locale_info['currency_symbol'] . "\n";
+echo "Monetary decimal point: " . $locale_info['mon_decimal_point'] . "\n";
+echo "Monetary thousands separator: " . $locale_info['mon_thousands_sep'] . "\n";
+echo "Positive sign: " . $locale_info['positive_sign'] . "\n";
+echo "Negative sign: " . $locale_info['negative_sign'] . "\n";
+echo "Fractional digits (local): " . $locale_info['frac_digits'] . "\n";
+echo "Fractional digits (international): " . $locale_info['int_frac_digits'] . "\n";
+echo "Positive currency symbol position: " . $locale_info['p_cs_precedes'] . "\n";
+echo "Negative currency symbol position: " . $locale_info['n_cs_precedes'] . "\n";
+
+/*
+This function is used to calculate the MD5 hash (Message-Digest Algorithm 5) of a given input string. 
+An MD5 hash is a fixed-length alphanumeric string (usually 32 characters long) that is generated based on the 
+contents of the input string. MD5 is a cryptographic hash function that was widely used for various purposes, 
+including data integrity checks and password storage.
+This function returns the MD5 hash of the input string as a string.
+*/
+
+$password = "mysecretpassword";
+$hashedPassword = md5($password);
+echo "Original Password: $password<br>"; // Original Password: mysecretpassword
+echo "MD5 Hash: $hashedPassword"; // MD5 Hash: 4cab2a2db6a3c31b01d804def28276e6
+echo '<br>';
+
+/*
+Use functions like password_hash() and password_verify() for password storage and verification, 
+or hash('sha256', $string) for a more secure hashing algorithm.
+*/
+
+$string = "Hello, World!";
+$hash = hash('sha256', $string);
+echo $hash;
+echo '<br>';
+
+// The md5_file() function calculates the MD5 hash of a file.
+
+/*
+The metaphone() function calculates the metaphone key of a string.
+A metaphone key represents how a string sounds if said by an English speaking person.
+The metaphone() function can be used for spelling applications.
+*/
+
+// The number_format() function formats a number with grouped thousands.
+echo number_format("1000000")."<br>";
+echo number_format("1000000",2)."<br>";
+echo number_format("1000000",2,",",".").'<br>';
+
+// The ord() function returns the ASCII value of the first character of a string.
+
+/*
+The parse_str() function in PHP is used to parse a query string into variables. 
+It takes a URL-encoded string and converts it into variables or an associative array. 
+This function is particularly useful for handling URL query strings or form data sent via GET requests. 
+*/
+
+$query = "name=John&age=30&city=New+York";
+parse_str($query);
+echo $name.'<br>'; // Output: John
+echo $age.'<br>';  // Output: 30
+echo $city.'<br>'; // Output: New York
+
+parse_str($query, $result);
+print_r($result);
+echo '<br>';
+
+function parseQueryString($query) {
+    $result = [];
+    parse_str($query, $result);
+    return $result;
+}
+
+$query1 = "name=John&age=30&city=New+York";
+$parsedData = parseQueryString($query1);
+print_r($parsedData);
+echo '<br>';
+
+// The quoted_printable_decode() function decodes a quoted-printable string to an 8-bit ASCII string.
