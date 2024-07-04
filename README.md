@@ -365,3 +365,12 @@ echo "Hello, " . $name . "!";
 ### Validate Input:
 
 > Validate and filter user input to ensure it conforms to expected formats.
+
+> # Difference between printf() & sprintf()
+
+
+|  printf() | sprintf() |
+| ------------- | ------------- |
+|  Outputs directly to the screen. | Returns the formatted string. 
+|Returns the length of the outputted string.| Returns the formatted string itself.
+| Suitable for immediate output, such as in scripts or command-line applications.| Suitable for creating strings that need to be manipulated or stored before outputting. |

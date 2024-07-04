@@ -457,3 +457,118 @@ $str2 = "Hello, PHP!";
 $similarity = similar_text($str1, $str2, $percent);
 echo "Number of matching characters: " . $similarity . "\n"; // Number of matching characters: 8
 echo "Similarity percentage: " . $percent . "%<br>"; // Similarity percentage: 66.666666666667%
+
+// The soundex() function calculates the soundex key of a string.
+
+/*
+If we want to capture the formatted string as a variable instead of displaying it immediately, we can use this function,
+which works similarly as printf() but returns the formatted string instead of printing it.
+*/
+$message=sprintf("Hello, my name is %s and I am %d years old.", $name, $age);
+echo $message; // Hello, my name is Sandhyodip and I am 29 years old.
+echo '<br>';
+
+/*
+The sscanf() function parses input from a string according to a specified format. 
+The sscanf() function parses a string into variables based on the format string.
+*/
+
+$input = "John 25 5.9";
+$name = "";
+$age = 0;
+$height = 0.0;
+
+sscanf($input, "%s %d %f", $name, $age, $height);
+
+echo "Name: $name\n";
+echo "Age: $age\n";
+echo "Height: $height\n";
+
+/*
+ The str_getcsv() function in PHP is used to parse a CSV (Comma-Separated Values) string into an array. 
+ This function is particularly useful for handling CSV data that is stored in a string format, 
+ allowing you to easily extract and work with the individual values.
+ */
+$csvString = 'John,Doe,25,"New York, USA"';
+$data = str_getcsv($csvString);
+print_r($data);
+
+/*
+You can specify custom delimiters and enclosure characters if your CSV data uses different ones. 
+For example, if the CSV string uses a semicolon (;) as the delimiter and a single quote (') as the enclosure:
+*/
+$csvString = "John;Doe;25;'New York, USA'";
+$data = str_getcsv($csvString, ';', "'");
+print_r($data);
+
+// If you have multiline CSV data, you can use str_getcsv() within a loop to process each line individually.
+$csvString = "John,Doe,25,\"New York, USA\"\nJane,Smith,30,\"Los Angeles, USA\"";
+$lines = explode("\n", $csvString);
+print_r($lines);
+foreach ($lines as $line) {
+    $data = str_getcsv($line);
+    print_r($data);
+}
+
+/*
+The str_ireplace() function replaces some characters with some other characters in a string.
+This function is case-insensitive.
+*/
+echo str_ireplace('world', 'Everyone', 'Hello World'); // Hello Everyone
+echo '<br>';
+
+// The str_pad() function pads a string to a new length.
+$str = "Hello World";
+echo str_pad($str,20,"Y"); //Hello WorldYYYYYYYYY 
+echo '<br>';
+
+// The str_repeat() function repeats a string a specified number of times.
+echo str_repeat("Love",7);
+echo '<br>';
+
+// The str_shuffle() function randomly shuffles all the characters of a string.
+echo str_shuffle("Hello World");
+echo '<br>';
+
+// The str_split() function splits a string into an array.
+print_r(str_split("Hello"));
+echo '<br>';
+
+// The str_word_count() function counts the number of words in a string.
+echo str_word_count("Hello world!").'<br>';
+print_r(str_word_count("Hello world!",1));
+echo '<br>';
+print_r(str_word_count("Hello world!",2));
+echo '<br>';
+
+// The strcasecmp() function compares two strings.
+echo strcasecmp("Hello world!","HELLO WORLD!").'<br>';
+echo 'If this function returns 0, the two strings are equal.<br>';
+
+// The strncasecmp() function compares two strings.
+echo strncasecmp("Hello world!","hello earth!",6);
+echo '<br>';
+
+// The strchr() function searches for the first occurrence of a string inside another string.
+// This function is case sensitive.
+$email = "user@example.com";
+$domain = strchr($email, '@');
+echo $domain.'<br>'; // Output: @example.com
+$user = strchr($email, '@', true);
+echo $user.'<br>'; // Output: user
+
+// The strstr() function searches for the first occurrence of a string inside another string.
+// This function is case sensitive.
+$email = "user@example.com";
+$domain = strstr($email, '@');
+echo $domain.'<br>'; // Output: @example.com
+$user = strstr($email, '@', true);
+echo $user.'<br>'; // Output: user
+
+// The stristr() function searches for the first occurrence of a string inside another string.
+// This function is case insensitive.
+$email = "user@example.com";
+$domain = stristr($email, 'E');
+echo $domain.'<br>'; // Output: er@example.com
+$user = stristr($email, 'X', true);
+echo $user.'<br>'; // Output: user@e
