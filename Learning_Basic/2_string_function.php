@@ -605,3 +605,47 @@ echo '<br>';
 // The stripcslashes() function removes backslashes added by the addcslashes() function.
 echo stripcslashes("Hello \World!");
 echo '<br>';
+
+// The stripslashes() function removes backslashes added by the addslashes() function.
+echo stripslashes("Who\'s Peter Griffin?");
+echo '<br>';
+
+/**
+ * The strnatcasecmp() function compares two strings using a "natural" algorithm.
+ * In a natural algorithm, the number 2 is less than the number 10. 
+ * In computer sorting, 10 is less than 2, because the first number in "10" is less than 2.
+ * The strnatcasecmp() is case-insensitive.
+ */
+
+ echo strnatcasecmp("2Hello world!","10Hello WORLD!"); // -1
+echo "<br>";
+echo strnatcasecmp("10Hello world!","2Hello WORLD!"); // 1
+echo '<br>';
+
+/**
+ * The strnatcmp() function compares two strings using a "natural" algorithm.
+ * In a natural algorithm, the number 2 is less than the number 10. 
+ * In computer sorting, 10 is less than 2, because the first number in "10" is less than 2.
+ * This function is case-sensitive.
+ */
+
+ // The strpbrk() function searches a string for any of the specified characters.
+ // This function is similer with strstr()
+echo strpbrk("Hello world!","oe"); // ello world!
+echo '<br>';
+
+// The strrchr() function finds the position of the last occurrence of a string within another string, and returns all characters from this position to the end of the string.
+echo strrchr("Hello world!","o"); // orld!
+echo '<br>';
+
+// The strrev() function reverses a string.
+echo strrev("Hello World!"); // !dlroW olleH
+echo '<br>'; 
+
+// The strspn() function returns the number of characters found in the string that contains only characters from the charlist parameter.
+
+/**
+ * The strstr() function searches for the first occurrence of a string inside another string.
+ * This function is binary-safe.
+ * This function is case-sensitive. For a case-insensitive search, use stristr() function.
+ */
