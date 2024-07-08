@@ -572,3 +572,36 @@ $domain = stristr($email, 'E');
 echo $domain.'<br>'; // Output: er@example.com
 $user = stristr($email, 'X', true);
 echo $user.'<br>'; // Output: user@e
+
+// The strcmp() function compares two strings.
+// The strcmp() function is binary-safe and case-sensitive.
+echo strcmp("Hello world!","Hello world!"); // 0
+echo '<br>';
+
+// The strcoll() function compares two strings.
+// The comparison of the strings may vary depending on the locale settings (A<a or A>a).
+// The strcoll() is case-sensitive but not binary-safe.
+
+setlocale (LC_COLLATE, 'NL');
+echo strcoll("Hello World!","Hello World!"); // 0
+echo "<br>";
+
+setlocale (LC_COLLATE, 'en_US');
+echo strcoll("Hello World!","Hello World!"); // 0
+echo '<br>';
+
+// The strcspn() function returns the number of characters (including whitespaces) found in a string before any part of the specified characters are found.
+echo strcspn("Hello world!","w"); // 6
+echo '<br>';
+
+echo strcspn("Hello world!","W",0,6); // 6  // The start position is 0 and the length of the search string is 6.
+echo '<br>';
+
+// The strip_tags() function strips a string from HTML, XML, and PHP tags.
+
+echo strip_tags("Hello <b>world!</b>");
+echo '<br>';
+
+// The stripcslashes() function removes backslashes added by the addcslashes() function.
+echo stripcslashes("Hello \World!");
+echo '<br>';
