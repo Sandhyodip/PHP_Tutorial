@@ -394,3 +394,31 @@ strtok(string $string, string $token): string|false
 > Subsequent Calls: Subsequent calls should omit the string parameter and only include the delimiter. These calls return the next token each time.
 
 > Loop: The loop continues until strtok() returns false, indicating there are no more tokens.
+
+# password_hash()
+
+> This function is used for securely hashing passwords using modern and recommended cryptographic algorithms. 
+
+> It's designed to make password storage more secure by incorporating features like salting and adaptive hashing. 
+
+> This function is a crucial part of secure password management to prevent common attacks, such as rainbow table attacks and brute force attacks.
+ 
+```php
+password_hash(string $password, int $algo, array $options = []): string|false
+```
+> $password: The password that we want to hash.
+
+> $algo: The algorithm to use for hashing. Commonly used values are PASSWORD_DEFAULT and PASSWORD_BCRYPT.
+
+> $options: An optional array of options. For PASSWORD_BCRYPT, you can specify the cost parameter which determines the computational cost of the hashing.
+
+> The function returns the hashed password as a string, or false on failure.
+
+### Important Notes
+
+#### Salting: password_hash() automatically handles salting. You don't need to generate or store a separate salt.
+
+#### Storage: Store the generated hash in your database. This hash contains the salt and algorithm information needed to verify the password later.
+
+#### Security: Always use PASSWORD_DEFAULT to ensure your application uses the most secure algorithm available in future versions of PHP.
+

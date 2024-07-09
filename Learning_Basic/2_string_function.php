@@ -749,6 +749,21 @@ if ($file) {
 } else {
     echo "Unable to open the file..!!";
 }
+echo '<br>';
 
+$input1 = 'Sandhyodip,Das,30';
+$csvArray = str_getcsv($input1);
+print_r($csvArray); // Array ( [0] => Sandhyodip [1] => Das [2] => 29 )
+echo '<br>';
 
+$inputName = "Math:93, Physics:89";
+$format1 = "Math:%d, Physics:%d";
+$result = sscanf($inputName, $format1, $math, $physics);
+echo $result.'<br>'; // 2
+
+if ($result === 2) {
+    echo "Math: $math, Physics: $physics<br>";
+} else {
+    echo "Parsing failed.<br>";
+} // Math: 93, Physics: 89
 
