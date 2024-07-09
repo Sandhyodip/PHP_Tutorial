@@ -374,3 +374,23 @@ echo "Hello, " . $name . "!";
 |  Outputs directly to the screen. | Returns the formatted string. 
 |Returns the length of the outputted string.| Returns the formatted string itself.
 | Suitable for immediate output, such as in scripts or command-line applications.| Suitable for creating strings that need to be manipulated or stored before outputting. |
+
+# strtok()
+
+```php
+strtok(string $string, string $token): string|false
+```
+> $string: The input string. This parameter is required only for the first call.
+
+> $token: The delimiter character(s).
+
+> Returns a string token on each call.
+
+> Returns false when there are no more tokens.
+
+### Explanation
+> First Call: The first call to strtok() takes both the string and the delimiter. It returns the first token.
+
+> Subsequent Calls: Subsequent calls should omit the string parameter and only include the delimiter. These calls return the next token each time.
+
+> Loop: The loop continues until strtok() returns false, indicating there are no more tokens.

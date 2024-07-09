@@ -649,3 +649,106 @@ echo '<br>';
  * This function is binary-safe.
  * This function is case-sensitive. For a case-insensitive search, use stristr() function.
  */
+
+ /**
+  * The strtok() function in PHP is used to tokenize a string. 
+  * It splits a string into smaller parts (tokens) based on a specified delimiter. Here's a quick guide on how to use it:
+  */
+
+$string = "This is an example string.";
+$token = strtok($string, " ");
+while ($token !== false) {
+    echo "$token\n";
+    $token = strtok(" ");
+}
+
+$string = "This is an example; string, with various; delimiters.";
+$delimiters = " ;,";  // space, semicolon, comma
+$token = strtok($string, $delimiters);
+while ($token !== false) {
+    echo "$token\n";
+    $token = strtok($delimiters);
+}
+
+// The strtr() function translates certain characters in a string.
+echo strtr("Hilla Warld","ia","eo"); // Hello World
+echo '<br>';
+
+$arr = array("Hello" => "Hi", "world" => "earth");
+echo strtr("Hello world",$arr); // Hi earth
+echo '<br>';
+
+// The substr_compare() function compares two strings from a specified start position.
+echo substr_compare("Hello world","Hello world",0); // 0 // If this function returns 0, the two strings are equal.
+echo '<br>';
+
+// The substr_count() function counts the number of times a substring occurs in a string.
+echo substr_count("Hello world. The world is nice","world"); // 2
+echo '<br>';
+
+$str = "This is nice";
+echo strlen($str)."<br>"; // Using strlen() to return the string length
+echo substr_count($str,"is")."<br>"; // The number of times "is" occurs in the string
+echo substr_count($str,"is",2)."<br>"; // The string is now reduced to "is is nice"
+echo substr_count($str,"is",3)."<br>"; // The string is now reduced to "s is nice"
+echo substr_count($str,"is",3,3)."<br>"; // The string is now reduced to "s i"
+
+// The substr_replace() function replaces a part of a string with another string.
+// f the start parameter is a negative number and length is less than or equal to start, length becomes 0.
+echo substr_replace("Hello","world",0); // world
+echo '<br>';
+echo substr_replace("Hello world","earth",6); // Hello earth
+echo '<br>';
+
+// The wordwrap() function wraps a string into new lines when it reaches a specific length.
+$str = "An example of a long word is: Supercalifragulistic";
+echo wordwrap($str,15,"<br>\n");
+echo '<br>';
+
+/**
+ * The vprintf() function in PHP is used to output a formatted string. 
+ * It works similarly to printf(), but instead of passing individual arguments directly, it takes an array of arguments. 
+ * This can be particularly useful when the number of arguments is dynamic.
+ */
+$format = "Name: %s, Age: %d, Height: %.2f meters\n";
+$args = ["John Doe", 30, 1.75];
+vprintf($format, $args); // Name: John Doe, Age: 30, Height: 1.75 meters
+echo '<br>';
+
+$number = 9;
+$str = "Beijing";
+vprintf("There are %u million bicycles in %s.",array($number,$str)); // There are 9 million bicycles in Beijing.
+echo '<br>';
+
+/**
+ * vsprintf()
+ * Function: Returns the formatted string instead of printing it.
+ * Syntax: vsprintf(string $format, array $args): string
+ * Return Value: Returns the formatted string.
+ * Usage: Suitable when you need to store the formatted string in a variable or manipulate it further before outputting.
+ */
+$format = "Name: %s, Age: %d, Height: %.2f meters\n";
+$args = ["John Doe", 30, 1.75];
+$formattedString = vsprintf($format, $args); 
+echo $formattedString.'<br>';
+
+/**
+ * The vfprintf() function in PHP is used to write a formatted string to a specified stream. (example: file or database).
+ * It works similarly to vprintf(), but instead of printing the output directly to the standard output, it writes it to a file or another output stream.
+ */
+$file = fopen("output.txt", "w");
+if ($file) {
+    $format = "Name: %s, Age: %d, Height: %.2f meters\n";
+    $args = ["John Doe", 30, 1.75];
+    
+    // Write the formatted string to the file
+    vfprintf($file, $format, $args);
+    
+    // Close the file
+    fclose($file);
+} else {
+    echo "Unable to open the file..!!";
+}
+
+
+
