@@ -421,4 +421,3 @@ password_hash(string $password, int $algo, array $options = []): string|false
 #### Storage: Store the generated hash in your database. This hash contains the salt and algorithm information needed to verify the password later.
 
 #### Security: Always use PASSWORD_DEFAULT to ensure your application uses the most secure algorithm available in future versions of PHP.
-

@@ -598,7 +598,6 @@ echo strcspn("Hello world!","W",0,6); // 6  // The start position is 0 and the l
 echo '<br>';
 
 // The strip_tags() function strips a string from HTML, XML, and PHP tags.
-
 echo strip_tags("Hello <b>world!</b>");
 echo '<br>';
 
@@ -617,7 +616,7 @@ echo '<br>';
  * The strnatcasecmp() is case-insensitive.
  */
 
- echo strnatcasecmp("2Hello world!","10Hello WORLD!"); // -1
+echo strnatcasecmp("2Hello world!","10Hello WORLD!"); // -1
 echo "<br>";
 echo strnatcasecmp("10Hello world!","2Hello WORLD!"); // 1
 echo '<br>';
@@ -694,7 +693,7 @@ echo substr_count($str,"is",3)."<br>"; // The string is now reduced to "s is nic
 echo substr_count($str,"is",3,3)."<br>"; // The string is now reduced to "s i"
 
 // The substr_replace() function replaces a part of a string with another string.
-// f the start parameter is a negative number and length is less than or equal to start, length becomes 0.
+// If the start parameter is a negative number and length is less than or equal to start, length becomes 0.
 echo substr_replace("Hello","world",0); // world
 echo '<br>';
 echo substr_replace("Hello world","earth",6); // Hello earth
